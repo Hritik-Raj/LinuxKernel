@@ -1,0 +1,25 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+paging_helper.o: paging_helper.S
+sys_wrapper.o: sys_wrapper.S
+wrapper.o: wrapper.S
+x86_desc.o: x86_desc.S x86_desc.h types.h
+fs.o: fs.c fs.h lib.h types.h sys.h x86_desc.h rtc.h i8259.h keyboard.h \
+  terminal.h paging.h paging_helper.h multiboot.h
+i8259.o: i8259.c i8259.h types.h lib.h
+idt.o: idt.c idt.h x86_desc.h types.h lib.h i8259.h debug.h tests.h \
+  keyboard.h rtc.h wrapper.h sys_wrapper.h sys.h fs.h multiboot.h \
+  terminal.h paging.h paging_helper.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  tests.h idt.h keyboard.h rtc.h wrapper.h sys_wrapper.h sys.h fs.h \
+  terminal.h paging.h paging_helper.h
+keyboard.o: keyboard.c keyboard.h lib.h types.h i8259.h idt.h x86_desc.h \
+  debug.h tests.h rtc.h wrapper.h sys_wrapper.h sys.h fs.h multiboot.h \
+  terminal.h paging.h paging_helper.h
+lib.o: lib.c lib.h types.h
+paging.o: paging.c paging.h paging_helper.h lib.h types.h
+rtc.o: rtc.c rtc.h lib.h types.h i8259.h keyboard.h
+sys.o: sys.c sys.h fs.h lib.h types.h multiboot.h x86_desc.h rtc.h \
+  i8259.h keyboard.h terminal.h paging.h paging_helper.h
+terminal.o: terminal.c terminal.h keyboard.h lib.h types.h i8259.h
+tests.o: tests.c tests.h x86_desc.h types.h lib.h rtc.h i8259.h \
+  keyboard.h fs.h sys.h terminal.h paging.h paging_helper.h multiboot.h
